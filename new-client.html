@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Client — ESN Connect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-header">
+  <h1>New Client Registration</h1>
+  <p>Create a new client record and issue an ESN ID card.</p>
+</div>
+
+<div class="main-content" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem; align-items:start;">
+
+  <!-- Left: Form -->
+  <div>
+    <div class="card">
+      <div class="card-title">Client Information</div>
+
+      <div id="form-error" class="alert alert-danger hidden"></div>
+
+      <form id="new-client-form" novalidate>
+
+        <div class="form-group">
+          <label for="client-name">Full Name <span class="required">*</span></label>
+          <input type="text" id="client-name" class="form-control" placeholder="First and last name">
+          <div class="form-error" id="err-name">Please enter the client's full name.</div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="client-dob">Date of Birth <span class="required">*</span></label>
+            <input type="date" id="client-dob" class="form-control">
+            <div class="form-error" id="err-dob">Please enter a date of birth.</div>
+          </div>
+          <div class="form-group">
+            <label for="client-shelter">Issuing Shelter <span class="required">*</span></label>
+            <select id="client-shelter" class="form-control">
+              <option value="">Select shelter...</option>
+              <option>Hope Mission Edmonton</option>
+              <option>Boyle Street Community Services</option>
+              <option>Bissell Centre</option>
+              <option>Mustard Seed Edmonton</option>
+              <option>WIN House Edmonton</option>
+              <option>Jasper Place Wellness Centre</option>
+              <option>Catholic Social Services Edmonton</option>
+              <option>Edmonton John Howard Society</option>
+              <option>Other</option>
+            </select>
+            <div class="form-error" id="err-shelter">Please select an issuing shelter.</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Client Photo <span class="required">*</span></label>
+          <div class="photo-upload-area" id="upload-area">
+            <input type="file" id="client-photo" accept="image/*">
+            <div class="photo-upload-icon">📷</div>
+            <div class="photo-upload-label">
+              <strong>Click to upload</strong> or drag and drop<br>
+              JPG, PNG, GIF up to 10MB
+            </div>
+          </div>
+          <div class="photo-preview-container" id="photo-preview-container">
+            <img id="photo-preview" class="photo-preview" src="" alt="Preview">
+            <button type="button" class="btn btn-ghost btn-sm" id="remove-photo">Remove photo</button>
+          </div>
+          <div class="form-error" id="err-photo">Please upload a photo.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="client-notes">Notes <span style="color:var(--text-muted);font-weight:400;">(optional)</span></label>
+          <textarea id="client-notes" class="form-control" placeholder="Intake notes, referral context, known needs, relevant history..."></textarea>
+          <div class="form-hint">This information is visible to authorized workers at participating organizations.</div>
+        </div>
+
+        <div style="display:flex; gap:0.75rem; margin-top:0.5rem;">
+          <button type="submit" class="btn btn-primary btn-lg" style="flex:1;">
+            Create Record + Issue Card
+          </button>
+          <button type="button" class="btn btn-ghost btn-lg" id="reset-btn">Clear</button>
+        </div>
+
+      </form>
+    </div>
+
+    <div class="alert alert-info" style="font-size:0.85rem;">
+      <strong>Reminder:</strong> This system is for shelter staff only. Client records are shared
+      with all participating organizations in the Edmonton Shelter Network.
+      Ensure the client has provided verbal consent before creating a record.
+    </div>
+  </div>
+
+  <!-- Right: ID Card output -->
+  <div>
+    <div class="card" id="card-panel">
+      <div class="card-title">ESN ID Card Preview</div>
+
+      <!-- Placeholder before form submission -->
+      <div id="card-placeholder">
+        <div class="empty-state" style="padding:2rem 1rem;">
+          <div class="empty-state-icon">🪪</div>
+          <p>Complete the form and click<br><strong>Create Record + Issue Card</strong><br>to generate the ESN ID card.</p>
+        </div>
+      </div>
+
+      <!-- Card output (hidden until form submitted) -->
+      <div id="card-output" class="hidden">
+        <div class="alert alert-success" id="success-msg"></div>
+
+        <div class="id-card-wrapper">
+          <div id="card-display"></div>
+
+          <div style="display:flex; gap:0.5rem; flex-wrap:wrap; justify-content:center;">
+            <button class="btn btn-outline btn-sm" onclick="window.print()">Print Card</button>
+            <button class="btn btn-ghost btn-sm" id="new-card-btn">Issue Another Card</button>
+          </div>
+        </div>
+
+        <div style="margin-top:1.5rem; padding:1rem; background:var(--bg); border-radius:var(--radius); border:1px solid var(--border);">
+          <div class="section-label" style="margin:0 0 0.5rem;">What happens next</div>
+          <ul style="font-size:0.85rem; color:var(--text-muted); line-height:1.7; padding-left:1.2rem;">
+            <li>Print and laminate the ID card for the client.</li>
+            <li>The card is recognized at all participating organizations.</li>
+            <li>If lost, the digital record allows instant reprinting.</li>
+            <li>Use <a href="lookup.html">Client Lookup</a> to find and update the record.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Back of card info -->
+    <div class="card" style="font-size:0.85rem; color:var(--text-muted);">
+      <div class="card-title">Card Back Text (for printing)</div>
+      <p style="font-style:italic; line-height:1.6;">
+        "This card is recognized by all participating organizations in the Edmonton Shelter Network.
+        If found, please return to any participating shelter."
+      </p>
+      <p style="margin-top:0.75rem;">Participating organizations include: Hope Mission Edmonton,
+        Boyle Street Community Services, Bissell Centre, Mustard Seed Edmonton,
+        WIN House Edmonton, and others.</p>
+      <p style="margin-top:0.5rem; font-size:0.78rem;">
+        Scan QR code to access digital record. This is a prototype demonstration system.
+      </p>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  ESN Connect — Edmonton Shelter Network | Demo Prototype | RSCH3000 Applied Research
+</footer>
+
+<script src="app.js"></script>
+<script>
+  requireAuth();
+  injectNav("new-client.html");
+
+  const form = document.getElementById("new-client-form");
+  const photoInput = document.getElementById("client-photo");
+  const previewContainer = document.getElementById("photo-preview-container");
+  const previewImg = document.getElementById("photo-preview");
+  const uploadArea = document.getElementById("upload-area");
+  let photoDataURL = null;
+
+  // Photo upload / preview
+  photoInput.addEventListener("change", function() {
+    const file = this.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      photoDataURL = e.target.result;
+      previewImg.src = photoDataURL;
+      uploadArea.style.display = "none";
+      previewContainer.classList.add("visible");
+      document.getElementById("err-photo").classList.remove("visible");
+    };
+    reader.readAsDataURL(file);
+  });
+
+  document.getElementById("remove-photo").addEventListener("click", function() {
+    photoDataURL = null;
+    photoInput.value = "";
+    previewImg.src = "";
+    previewContainer.classList.remove("visible");
+    uploadArea.style.display = "";
+  });
+
+  // Form validation
+  function validate() {
+    let ok = true;
+    const name = document.getElementById("client-name").value.trim();
+    const dob = document.getElementById("client-dob").value;
+    const shelter = document.getElementById("client-shelter").value;
+
+    const showErr = (id, field) => {
+      document.getElementById(id).classList.add("visible");
+      document.getElementById(field).classList.add("error");
+    };
+    const clearErr = (id, field) => {
+      document.getElementById(id).classList.remove("visible");
+      document.getElementById(field).classList.remove("error");
+    };
+
+    if (!name) { showErr("err-name", "client-name"); ok = false; }
+    else clearErr("err-name", "client-name");
+
+    if (!dob) { showErr("err-dob", "client-dob"); ok = false; }
+    else clearErr("err-dob", "client-dob");
+
+    if (!shelter) { showErr("err-shelter", "client-shelter"); ok = false; }
+    else clearErr("err-shelter", "client-shelter");
+
+    if (!photoDataURL) {
+      document.getElementById("err-photo").classList.add("visible");
+      ok = false;
+    } else {
+      document.getElementById("err-photo").classList.remove("visible");
+    }
+
+    return ok;
+  }
+
+  // Form submit
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    if (!validate()) return;
+
+    const name    = document.getElementById("client-name").value.trim();
+    const dob     = document.getElementById("client-dob").value;
+    const shelter = document.getElementById("client-shelter").value;
+    const esnId   = generateESNId();
+    const issued  = today();
+
+    // Build card
+    const cardHTML = buildIDCardHTML({
+      name, dob,
+      photoSrc: photoDataURL,
+      esnId, issued,
+      issuedAt: shelter
+    });
+
+    document.getElementById("card-display").innerHTML = cardHTML;
+    document.getElementById("success-msg").textContent =
+      `Record created. ESN ID ${esnId} issued for ${name}.`;
+
+    document.getElementById("card-placeholder").classList.add("hidden");
+    document.getElementById("card-output").classList.remove("hidden");
+
+    // Scroll to card
+    document.getElementById("card-panel").scrollIntoView({ behavior: "smooth" });
+  });
+
+  // Reset
+  document.getElementById("reset-btn").addEventListener("click", function() {
+    form.reset();
+    photoDataURL = null;
+    photoInput.value = "";
+    previewImg.src = "";
+    previewContainer.classList.remove("visible");
+    uploadArea.style.display = "";
+    document.getElementById("card-placeholder").classList.remove("hidden");
+    document.getElementById("card-output").classList.add("hidden");
+    document.querySelectorAll(".form-error").forEach(el => el.classList.remove("visible"));
+    document.querySelectorAll(".form-control").forEach(el => el.classList.remove("error"));
+  });
+
+  document.getElementById("new-card-btn").addEventListener("click", function() {
+    document.getElementById("reset-btn").click();
+    document.getElementById("client-name").focus();
+  });
+</script>
+</body>
+</html>

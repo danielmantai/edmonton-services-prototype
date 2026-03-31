@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agency Directory — ESN Connect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-header">
+  <h1>Edmonton Agency Directory</h1>
+  <p>Real organizations supporting unhoused people in Edmonton. Use this as a referral guide.</p>
+</div>
+
+<div class="main-content">
+
+  <div class="alert alert-info" style="font-size:0.875rem; margin-bottom:1.5rem;">
+    All agencies listed are real Edmonton organizations. Website links open in a new tab.
+    For immediate referrals, call <strong>211</strong> (Alberta's social services helpline, available 24/7).
+  </div>
+
+  <!-- Filter bar -->
+  <div style="display:flex; flex-wrap:wrap; gap:0.5rem; margin-bottom:1.5rem; align-items:center;">
+    <span style="font-size:0.82rem; color:var(--text-muted); font-weight:600; text-transform:uppercase; letter-spacing:0.05em;">Filter:</span>
+    <button class="btn btn-sm btn-primary filter-btn active" data-filter="all">All</button>
+    <button class="btn btn-sm btn-ghost filter-btn" data-filter="shelter">Shelter</button>
+    <button class="btn btn-sm btn-ghost filter-btn" data-filter="food">Food</button>
+    <button class="btn btn-sm btn-ghost filter-btn" data-filter="health">Health</button>
+    <button class="btn btn-sm btn-ghost filter-btn" data-filter="housing">Housing</button>
+    <button class="btn btn-sm btn-ghost filter-btn" data-filter="employment">Employment</button>
+    <button class="btn btn-sm btn-ghost filter-btn" data-filter="id">ID Services</button>
+  </div>
+
+  <div class="agencies-grid" id="agencies-grid">
+
+    <!-- 1. Hope Mission -->
+    <div class="agency-card" data-tags="shelter food health outreach">
+      <div class="agency-card-name">Hope Mission Edmonton</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-shelter">Shelter</span>
+        <span class="tag tag-food">Food</span>
+        <span class="tag tag-health">Health</span>
+        <span class="tag tag-outreach">Outreach</span>
+      </div>
+      <div class="agency-card-desc">
+        One of Edmonton's largest social service organizations, providing emergency shelter for men,
+        women, and families, a soup kitchen, medical and dental clinic, addiction recovery programs
+        (including the Bridge Recovery Community), and extensive outreach services. Open 24/7 for
+        emergency intake.
+      </div>
+      <div class="agency-card-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">780-422-2018</span>
+        <a href="https://hopemission.com" target="_blank" rel="noopener" class="agency-card-link">hopemission.com</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 2. Boyle Street Community Services -->
+    <div class="agency-card" data-tags="shelter outreach health housing indigenous">
+      <div class="agency-card-name">Boyle Street Community Services</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-outreach">Outreach</span>
+        <span class="tag tag-health">Health</span>
+        <span class="tag tag-housing">Housing</span>
+        <span class="tag tag-indigenous">Indigenous Services</span>
+      </div>
+      <div class="agency-card-desc">
+        A comprehensive downtown drop-in serving Edmonton's most vulnerable residents since 1971.
+        Offers street outreach, mental health and addictions support, harm reduction, housing
+        assistance, legal clinic access, and culturally safe programming for Indigenous community members.
+        Central to the inner-city service network.
+      </div>
+      <div class="agency-card-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">780-424-4106</span>
+        <a href="https://boylestreet.org" target="_blank" rel="noopener" class="agency-card-link">boylestreet.org</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 3. Bissell Centre -->
+    <div class="agency-card" data-tags="shelter food housing employment outreach">
+      <div class="agency-card-name">Bissell Centre</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-shelter">Shelter</span>
+        <span class="tag tag-food">Food</span>
+        <span class="tag tag-housing">Housing</span>
+        <span class="tag tag-employment">Employment</span>
+      </div>
+      <div class="agency-card-desc">
+        Works to break the cycle of poverty through a continuum of services including emergency
+        shelter, transitional housing, a food bank, employment training, life skills programs,
+        and family support services. The Employment Resource Centre offers job placement, resume
+        workshops, and training programs.
+      </div>
+      <div class="agency-card-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">780-423-2285</span>
+        <a href="https://bissellcentre.org" target="_blank" rel="noopener" class="agency-card-link">bissellcentre.org</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 4. Mustard Seed Edmonton -->
+    <div class="agency-card" data-tags="shelter food outreach health">
+      <div class="agency-card-name">Mustard Seed Edmonton</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-shelter">Shelter</span>
+        <span class="tag tag-food">Food</span>
+        <span class="tag tag-outreach">Outreach</span>
+      </div>
+      <div class="agency-card-desc">
+        Provides emergency shelter, a food bank, hot meals, clothing, and life skills support
+        to people experiencing homelessness and poverty. Operates on a Christian service ethic
+        with a welcoming environment for all. Also runs street outreach connecting people to
+        community resources.
+      </div>
+      <div class="agency-card-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">780-424-7946</span>
+        <a href="https://www.mustardseededmonton.ca" target="_blank" rel="noopener" class="agency-card-link">mustardseededmonton.ca</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 5. Homeward Trust Edmonton -->
+    <div class="agency-card" data-tags="housing">
+      <div class="agency-card-name">Homeward Trust Edmonton</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-housing">Housing</span>
+        <span class="tag tag-referral">System Planning</span>
+      </div>
+      <div class="agency-card-desc">
+        The system-planning body responsible for coordinating Edmonton's response to homelessness.
+        Manages Housing First funding, maintains the Coordinated Access system (the formal
+        housing waitlist), and funds a network of housing providers across the city. Not a
+        direct service provider, but the entry point for housing placement.
+      </div>
+      <div class="agency-card-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">780-496-2130</span>
+        <a href="https://homewardtrust.ca" target="_blank" rel="noopener" class="agency-card-link">homewardtrust.ca</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 6. WIN House Edmonton -->
+    <div class="agency-card" data-tags="shelter housing women">
+      <div class="agency-card-name">WIN House Edmonton</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-shelter">Shelter</span>
+        <span class="tag tag-women">Women &amp; Children</span>
+        <span class="tag tag-housing">Housing Support</span>
+      </div>
+      <div class="agency-card-desc">
+        Edmonton's largest emergency shelter for women and children fleeing domestic violence.
+        Provides confidential emergency accommodation, crisis counselling, safety planning,
+        children's programming, and transitional housing support. Intake is 24/7 and location
+        is not publicly disclosed for safety reasons.
+      </div>
+      <div class="agency-card-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">780-479-0058 (24hr)</span>
+        <a href="https://winhouse.org" target="_blank" rel="noopener" class="agency-card-link">winhouse.org</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 7. Jasper Place Wellness Centre -->
+    <div class="agency-card" data-tags="health outreach">
+      <div class="agency-card-name">Jasper Place Wellness Centre</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-health">Health</span>
+        <span class="tag tag-outreach">Outreach</span>
+      </div>
+      <div class="agency-card-desc">
+        A community health centre offering primary care, mental health and addictions services,
+        dental care, harm reduction, and social support to people who face barriers accessing
+        mainstream healthcare. Serves predominantly low-income and unhoused residents in
+        west Edmonton. No appointment necessary for walk-in care.
+      </div>
+      <div class="agency-card-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">780-757-0981</span>
+        <a href="https://jpwellness.ca" target="_blank" rel="noopener" class="agency-card-link">jpwellness.ca</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 8. Edmonton John Howard Society -->
+    <div class="agency-card" data-tags="housing employment outreach">
+      <div class="agency-card-name">Edmonton John Howard Society</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-housing">Housing</span>
+        <span class="tag tag-employment">Employment</span>
+        <span class="tag tag-outreach">Reintegration</span>
+      </div>
+      <div class="agency-card-desc">
+        Supports people involved in or leaving the criminal justice system with reintegration
+        services including transitional housing, employment counselling, life skills, and
+        community supervision support. Addresses the overlap between incarceration and homelessness,
+        particularly for people released without housing or ID.
+      </div>
+      <div class="agency-card-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">780-428-7590</span>
+        <a href="https://edmontonjhs.ab.ca" target="_blank" rel="noopener" class="agency-card-link">edmontonjhs.ab.ca</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 9. Catholic Social Services Edmonton -->
+    <div class="agency-card" data-tags="shelter food housing health employment outreach women">
+      <div class="agency-card-name">Catholic Social Services Edmonton</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-food">Food</span>
+        <span class="tag tag-housing">Housing</span>
+        <span class="tag tag-health">Counselling</span>
+        <span class="tag tag-outreach">Newcomers</span>
+      </div>
+      <div class="agency-card-desc">
+        One of Alberta's largest social service agencies, offering a wide range of programs
+        including emergency food assistance, counselling, housing support, newcomer settlement
+        services, family violence intervention, and programs for seniors and people with
+        disabilities. Serves people of all faiths and backgrounds.
+      </div>
+      <div class="agency-card-footer">
+        <a href="https://catholicsocialservices.ab.ca" target="_blank" rel="noopener" class="agency-card-link">catholicsocialservices.ab.ca</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 10. Boyle McCauley Health Centre -->
+    <div class="agency-card" data-tags="health outreach">
+      <div class="agency-card-name">Boyle McCauley Health Centre</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-health">Health</span>
+        <span class="tag tag-outreach">Inner City</span>
+      </div>
+      <div class="agency-card-desc">
+        A community health centre delivering primary care, mental health services, nursing,
+        dental care, and social support to inner-city residents since 1980. Operates on a
+        sliding-scale fee model and serves patients who are unhoused, precariously housed,
+        or otherwise unable to access mainstream health care. Walk-ins accepted.
+      </div>
+      <div class="agency-card-footer">
+        <a href="https://bmhc.ca" target="_blank" rel="noopener" class="agency-card-link">bmhc.ca</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 11. Service Alberta (ID Services) -->
+    <div class="agency-card" data-tags="id">
+      <div class="agency-card-name">Service Alberta — ID Document Assistance</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-id">ID Services</span>
+        <span class="tag tag-referral">Government</span>
+      </div>
+      <div class="agency-card-desc">
+        The provincial government office responsible for issuing Alberta ID cards, driver's
+        licences, and birth certificates. Fee waivers are available for people experiencing
+        homelessness. Many shelters can help clients navigate the application process.
+        Note: government-issued ID requires proof of identity, creating a barrier for people
+        who have lost all documents.
+      </div>
+      <div class="agency-card-footer">
+        <a href="https://www.alberta.ca/get-id-documents" target="_blank" rel="noopener" class="agency-card-link">alberta.ca/get-id-documents</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+    <!-- 12. 211 Alberta -->
+    <div class="agency-card" data-tags="outreach referral id shelter food health housing employment">
+      <div class="agency-card-name">211 Alberta</div>
+      <div class="agency-card-tags">
+        <span class="tag tag-referral">Referral Line</span>
+        <span class="tag tag-outreach">Information</span>
+      </div>
+      <div class="agency-card-desc">
+        Alberta's free, 24/7 helpline and online directory for health and human services.
+        Connects callers to shelters, food banks, mental health support, housing resources,
+        legal aid, and hundreds of other services. Available by phone (dial 211), text, or
+        online. Multilingual support available. The best first call for any service navigation need.
+      </div>
+      <div class="agency-card-footer">
+        <span style="font-size:0.8rem; color:var(--text-muted);">Dial or text 2-1-1</span>
+        <a href="https://ab.211.ca" target="_blank" rel="noopener" class="agency-card-link">ab.211.ca</a>
+        <button class="btn btn-ghost btn-sm" disabled title="Referral not implemented in demo">Add Referral</button>
+      </div>
+    </div>
+
+  </div><!-- /agencies-grid -->
+
+  <div class="alert alert-warning" style="margin-top:2rem; font-size:0.85rem;">
+    <strong>Note for Daniel:</strong> Agency website URLs should be verified before final submission or presentation.
+    All organizations listed are real Edmonton agencies. If any URLs have changed, update the
+    <code>href</code> values in <code>agencies.html</code> directly.
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  ESN Connect — Edmonton Shelter Network | Demo Prototype | RSCH3000 Applied Research
+</footer>
+
+<script src="app.js"></script>
+<script>
+  requireAuth();
+  injectNav("agencies.html");
+
+  // Filter buttons
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.addEventListener("click", function() {
+      const filter = this.dataset.filter;
+
+      // Update button states
+      document.querySelectorAll(".filter-btn").forEach(b => {
+        b.classList.remove("btn-primary", "active");
+        b.classList.add("btn-ghost");
+      });
+      this.classList.remove("btn-ghost");
+      this.classList.add("btn-primary", "active");
+
+      // Show/hide cards
+      document.querySelectorAll(".agency-card").forEach(card => {
+        if (filter === "all") {
+          card.style.display = "";
+        } else {
+          const tags = card.dataset.tags || "";
+          card.style.display = tags.includes(filter) ? "" : "none";
+        }
+      });
+    });
+  });
+</script>
+</body>
+</html>

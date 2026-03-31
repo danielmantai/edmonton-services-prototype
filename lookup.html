@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Lookup — ESN Connect</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="nav-placeholder"></div>
+
+<div class="page-header">
+  <h1>Client Lookup</h1>
+  <p>Search the demo database by name to view a client profile and service history.</p>
+</div>
+
+<div class="main-content narrow">
+
+  <div class="search-bar">
+    <input
+      type="text"
+      id="search-input"
+      class="form-control"
+      placeholder="Search by client name..."
+      autocomplete="off"
+      autofocus
+    >
+    <button class="btn btn-primary" id="search-btn">Search</button>
+  </div>
+
+  <!-- Demo hint -->
+  <div class="alert alert-info" id="demo-hint" style="font-size:0.85rem;">
+    <strong>Demo database:</strong> Try searching for
+    <a href="#" class="demo-name">Jane</a>,
+    <a href="#" class="demo-name">Michael</a>,
+    <a href="#" class="demo-name">Sarah</a>, or
+    <a href="#" class="demo-name">David</a>.
+  </div>
+
+  <!-- Results area -->
+  <div id="results-area"></div>
+
+</div>
+
+<footer class="site-footer">
+  ESN Connect — Edmonton Shelter Network | Demo Prototype | RSCH3000 Applied Research
+</footer>
+
+<script src="app.js"></script>
+<script>
+  requireAuth();
+  injectNav("lookup.html");
+
+  const searchInput = document.getElementById("search-input");
+  const resultsArea = document.getElementById("results-area");
+
+  // Demo name quick-fill
+  document.querySelectorAll(".demo-name").forEach(link => {
+    link.addEventListener("click", function(e) {
+      e.preventDefault();
+      searchInput.value = this.textContent;
+      doSearch();
+    });
+  });
+
+  async function doSearch() {
+    const query = searchInput.value.trim();
+    if (!query) {
+      resultsArea.innerHTML = "";
+      return;
+    }
+
+    resultsArea.innerHTML = `<div class="text-muted" style="padding:1rem 0;">Searching...</div>`;
+
+    const clients = await loadClients();
+    const results = searchClients(clients, query);
+
+    if (results.length === 0) {
+      resultsArea.innerHTML = `
+        <div class="empty-state">
+          <div class="empty-state-icon">🔍</div>
+          <p>No clients found matching <strong>"${escapeHtml(query)}"</strong>.</p>
+          <p class="mt-1" style="font-size:0.85rem;">Check the spelling or try a partial name.</p>
+        </div>
+      `;
+      return;
+    }
+
+    const count = results.length;
+    let html = `
+      <div class="section-label" style="margin-top:0;">
+        ${count} result${count !== 1 ? "s" : ""} for "${escapeHtml(query)}"
+      </div>
+    `;
+
+    results.forEach(client => {
+      html += buildClientProfileHTML(client);
+    });
+
+    resultsArea.innerHTML = html;
+  }
+
+  document.getElementById("search-btn").addEventListener("click", doSearch);
+
+  searchInput.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") doSearch();
+  });
+
+  // Live search on input (debounced)
+  let debounceTimer;
+  searchInput.addEventListener("input", function() {
+    clearTimeout(debounceTimer);
+    if (!this.value.trim()) {
+      resultsArea.innerHTML = "";
+      return;
+    }
+    debounceTimer = setTimeout(doSearch, 300);
+  });
+</script>
+</body>
+</html>

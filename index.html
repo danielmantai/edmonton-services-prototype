@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ESN Connect — Edmonton Shelter Network</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Login page overrides body defaults */
+    body { display: block; background: var(--primary); }
+  </style>
+</head>
+<body>
+
+<div class="login-page">
+
+  <!-- Left: intro / context -->
+  <div class="login-left">
+    <div class="login-logo">
+      <div class="logo-title">ESN<span>Connect</span></div>
+      <div class="logo-sub">Edmonton Shelter Network</div>
+    </div>
+
+    <div class="login-intro">
+      <h2>A service coordination system for frontline workers.</h2>
+      <p>
+        ESN Connect allows shelter staff and frontline social service workers
+        to create, look up, and share client records across the Edmonton Shelter Network.
+        It is built around the ESN ID card, a shelter-issued credential that gives
+        unhoused people a stable identity within the service system, even without
+        government-issued photo ID.
+      </p>
+      <p>
+        This is a <strong style="color:rgba(255,255,255,0.9)">demonstration prototype</strong>
+        built for RSCH3000 Applied Research. No real client data is stored or transmitted.
+      </p>
+
+      <ul class="login-features">
+        <li>Create new client records and generate ESN ID cards</li>
+        <li>Look up existing clients and view their service history</li>
+        <li>Coordinate referrals across participating organizations</li>
+        <li>Access the Edmonton agency directory</li>
+        <li>Read the funding problem explainer</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Right: login form -->
+  <div class="login-right">
+    <div class="login-form-card">
+      <h2>Worker Sign In</h2>
+      <p class="login-subtitle">Authorized shelter staff and frontline workers only.</p>
+
+      <div id="login-error" class="alert alert-danger hidden">
+        Please enter both a username and password.
+      </div>
+
+      <form id="login-form" novalidate>
+        <div class="form-group">
+          <label for="username">Username <span class="required">*</span></label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            placeholder="Enter your username"
+            autocomplete="username"
+            autofocus
+          >
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password <span class="required">*</span></label>
+          <input
+            type="password"
+            id="password"
+            class="form-control"
+            placeholder="Enter your password"
+            autocomplete="current-password"
+          >
+        </div>
+
+        <button type="submit" class="btn btn-accent btn-full btn-lg" style="margin-top:0.5rem;">
+          Sign In
+        </button>
+      </form>
+
+      <div class="login-demo-note">
+        <strong>Demo mode:</strong> Any non-empty username and password will work.
+        Try <code>admin</code> / <code>demo</code>.
+      </div>
+
+      <div style="margin-top:1.5rem; padding-top:1rem; border-top:1px solid var(--border); font-size:0.78rem; color:var(--text-muted); text-align:center;">
+        This system is for shelter staff and frontline workers only.<br>
+        If you are seeking services, please visit
+        <a href="agencies.html" style="color:var(--primary);">the agency directory</a>
+        or call <strong>211</strong> for referrals.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+<script>
+  // If already logged in, skip to portal
+  if (isLoggedIn()) {
+    window.location.href = "new-client.html";
+  }
+
+  document.getElementById("login-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+    const error = document.getElementById("login-error");
+
+    if (login(username, password)) {
+      error.classList.add("hidden");
+      window.location.href = "new-client.html";
+    } else {
+      error.classList.remove("hidden");
+      document.getElementById("username").classList.add("error");
+      document.getElementById("password").classList.add("error");
+    }
+  });
+
+  // Clear error state on input
+  ["username", "password"].forEach(id => {
+    document.getElementById(id).addEventListener("input", function() {
+      document.getElementById("login-error").classList.add("hidden");
+      this.classList.remove("error");
+    });
+  });
+</script>
+</body>
+</html>

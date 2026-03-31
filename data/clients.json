@@ -1,0 +1,154 @@
+[
+  {
+    "id": "ESN-2026-0001",
+    "name": "Jane Doe",
+    "dob": "1988-03-15",
+    "photo": "https://placehold.co/150x150/2b6cb0/ffffff?text=JD",
+    "issued": "2026-01-12",
+    "issuedAt": "Hope Mission Edmonton",
+    "notes": "First contact at Hope Mission. Lost ID during encampment clearance. Stable intake. No known allergies. Referred to Bissell Centre for employment support.",
+    "services": [
+      {
+        "date": "2026-01-12",
+        "org": "Hope Mission Edmonton",
+        "service": "Emergency Shelter",
+        "notes": "Initial intake. No government ID. ESN card issued."
+      },
+      {
+        "date": "2026-01-19",
+        "org": "Boyle Street Community Services",
+        "service": "Mental Health Counselling",
+        "notes": "Referred by Hope Mission. First session completed."
+      },
+      {
+        "date": "2026-01-26",
+        "org": "Bissell Centre",
+        "service": "Employment Counselling",
+        "notes": "Resume workshop attended. Follow-up scheduled."
+      },
+      {
+        "date": "2026-02-03",
+        "org": "Mustard Seed Edmonton",
+        "service": "Food Bank",
+        "notes": "Weekly access registered."
+      },
+      {
+        "date": "2026-02-18",
+        "org": "Homeward Trust Edmonton",
+        "service": "Housing Assessment",
+        "notes": "Application submitted. ESN record cited as service engagement evidence."
+      }
+    ]
+  },
+  {
+    "id": "ESN-2026-0002",
+    "name": "Michael Torres",
+    "dob": "1974-07-22",
+    "photo": "https://placehold.co/150x150/123a6d/ffffff?text=MT",
+    "issued": "2026-01-20",
+    "issuedAt": "Boyle Street Community Services",
+    "notes": "Ongoing addiction recovery support. Previous stay at Hope Mission. Interested in Housing First program. Replacement card issued Feb 2 after wallet stolen.",
+    "services": [
+      {
+        "date": "2026-01-20",
+        "org": "Boyle Street Community Services",
+        "service": "Drop-In and Outreach",
+        "notes": "Initial intake. ESN card issued."
+      },
+      {
+        "date": "2026-01-28",
+        "org": "Hope Mission Edmonton",
+        "service": "Recovery Program",
+        "notes": "Enrolled in Bridge Recovery Program."
+      },
+      {
+        "date": "2026-02-02",
+        "org": "Boyle Street Community Services",
+        "service": "Card Replacement",
+        "notes": "Wallet stolen. Replacement issued using digital record photo match."
+      },
+      {
+        "date": "2026-02-10",
+        "org": "Homeward Trust Edmonton",
+        "service": "Housing First Assessment",
+        "notes": "Added to Housing First waitlist. Priority level 2."
+      },
+      {
+        "date": "2026-02-24",
+        "org": "Jasper Place Wellness Centre",
+        "service": "Primary Health Care",
+        "notes": "Physical exam completed. Referral to dental clinic."
+      }
+    ]
+  },
+  {
+    "id": "ESN-2026-0003",
+    "name": "Sarah Nguyen",
+    "dob": "1995-11-08",
+    "photo": "https://placehold.co/150x150/4a1d8a/ffffff?text=SN",
+    "issued": "2026-02-01",
+    "issuedAt": "WIN House Edmonton",
+    "notes": "Fled domestic violence situation. Two young children (ages 3 and 6). Priority for family housing placement. ESN card critical for coordinating multi-agency support.",
+    "services": [
+      {
+        "date": "2026-02-01",
+        "org": "WIN House Edmonton",
+        "service": "Emergency Shelter",
+        "notes": "Intake with two children. Confidential location. ESN card issued."
+      },
+      {
+        "date": "2026-02-08",
+        "org": "Catholic Social Services Edmonton",
+        "service": "Family Counselling",
+        "notes": "First session completed. Ongoing weekly."
+      },
+      {
+        "date": "2026-02-15",
+        "org": "WIN House Edmonton",
+        "service": "Children's Programming",
+        "notes": "Both children enrolled in on-site early learning program."
+      },
+      {
+        "date": "2026-02-22",
+        "org": "Homeward Trust Edmonton",
+        "service": "Family Housing Assessment",
+        "notes": "Priority family flag. Added to family housing waitlist. Estimated 4-6 week placement."
+      }
+    ]
+  },
+  {
+    "id": "ESN-2026-0004",
+    "name": "David Okafor",
+    "dob": "1982-05-30",
+    "photo": "https://placehold.co/150x150/065f46/ffffff?text=DO",
+    "issued": "2026-02-14",
+    "issuedAt": "Mustard Seed Edmonton",
+    "notes": "Recently released from correctional facility. No fixed address. Strong motivation for employment. Working with John Howard Society on reintegration plan.",
+    "services": [
+      {
+        "date": "2026-02-14",
+        "org": "Mustard Seed Edmonton",
+        "service": "Emergency Shelter",
+        "notes": "Initial intake. ESN card issued."
+      },
+      {
+        "date": "2026-02-19",
+        "org": "Edmonton John Howard Society",
+        "service": "Reintegration Support",
+        "notes": "Case worker assigned. Employment and housing focus."
+      },
+      {
+        "date": "2026-02-26",
+        "org": "Bissell Centre",
+        "service": "Employment Services",
+        "notes": "Vocational assessment completed. Matched to construction trades program."
+      },
+      {
+        "date": "2026-03-05",
+        "org": "Jasper Place Wellness Centre",
+        "service": "Primary Health Care",
+        "notes": "First appointment. Prescription renewal."
+      }
+    ]
+  }
+]
